@@ -1,0 +1,49 @@
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #1a1a1a;
+  color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.header-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Pega aquí los estilos que me diste para cada botón: */
+/* Estilos del botón de búsqueda */
+.input {
+  color: black;
+  font: 1em/1.5 Hind, sans-serif;
+}
+/* ... (pega todo el CSS de .input, .caret, label, etc...) */
+/* ... (pega aquí los @keyframes también) */
+
+/* Estilos botón aleatorio */
+.button {
+  /* ... (todo lo que me diste de la clase .button con sus anidados) */
+}
+/* Incluye también @keyframes dots y @media query */
+
+/* Estilos botón info */
+.button .span {
+  /* ... pega los estilos */
+}
+
+/* Estilos botón login */
+.user-profile {
+  /* ... */
+}
+.user-profile-inner {
+  /* ... */
+}

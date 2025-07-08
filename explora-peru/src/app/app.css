@@ -1,27 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
 .main-layout {
   display: flex;
+  flex-direction: row;
   width: 100%;
   height: calc(100vh - 80px);
 }
 
-.left-panel {
-  width: 50%;
-  background-color: #222;
-  color: white;
+.left-panel,
+.right-panel {
+  height: 100%;
+  flex: 1 1 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.left-panel {
+  background-size: cover;
+  background-position: center;
 }
 
 .right-panel {
-  width: 50%;
   background-color: #e6e6e6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 1rem;
+  overflow: auto;
 }
 
-.mapa-peru {
-  max-width: 90%;
+.right-panel img,
+.right-panel svg {
+  max-width: 100%;
   height: auto;
+  display: block;
 }

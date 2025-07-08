@@ -1,0 +1,65 @@
+.button {
+  position: relative;
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+}
+
+.button > button {
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  appearance: none;
+  border: 2px solid #292524;
+  border-radius: 0.25rem;
+  background-color: #facc15;
+  transition: background-color 0.2s;
+}
+
+.button > button:hover {
+  background-color: #fde047;
+}
+
+.button > span:nth-child(2),
+.button > span:nth-child(3),
+.button > span:nth-child(4) {
+  position: absolute;
+  inset: 3px;
+  pointer-events: none;
+  background-color: #facc15;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+.button > span:nth-child(3)::before {
+  content: "";
+  width: 0.375rem;
+  height: 0.375rem;
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  background-color: #292524;
+  border-radius: 0.125rem;
+  box-shadow:
+    3.125em 0 #292524,
+    0 3.125em #292524,
+    3.125em 3.125em #292524;
+}
+
+.button > span:nth-child(4)::after {
+  content: "";
+  width: 0.25rem;
+  height: 0.25rem;
+  position: absolute;
+  top: 0.875rem;
+  left: 1rem;
+  border-radius: 0.0625px;
+  background-color: #292524;
+  box-shadow:
+    0.75em 2em #292524,
+    1em 2em #292524,
+    0.75em 1.75em #292524,
+    1em 1.75em #292524,
+    0.75em 1.25em #292524,
+    1em 1.25em #292524;
+}

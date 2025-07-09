@@ -1,4 +1,3 @@
-
 <div class="input-wrapper">
   <button class="icon"> 
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="25px" width="25px">
@@ -6,5 +5,12 @@
       <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#fff" d="M22 22L20 20"></path>
     </svg>
   </button>
-  <input placeholder="buscar ..." class="input" name="text" type="text">
+  
+  <input 
+    placeholder="Buscar región..." 
+    class="input" 
+    name="text" 
+    type="text"
+    (keyup)="onSearch($event)"
+  >
 </div>

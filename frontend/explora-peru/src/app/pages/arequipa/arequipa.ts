@@ -1,13 +1,21 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RegionService } from '../../services/region/region';
 
 @Component({
   selector: 'app-arequipa',
   standalone: true,
-  template: `
-    <div style="padding: 2rem;">
-      <h1>Bienvenido a Arequipa</h1>
-      <p>Explora la región Arequipa, famosa por su cultura, historia y gastronomía.</p>
-    </div>
-  `
+  templateUrl: './arequipa.html',
+  imports: [CommonModule],
 })
-export class ArequipaComponent {}
+export class Arequipa {
+  constructor(public regionService: RegionService) {}
+
+  buscar() {
+    this.regionService.getRegionArequipa();
+  }
+
+  aleatorio() {
+    this.regionService.getRegionArequipa();
+  }
+}

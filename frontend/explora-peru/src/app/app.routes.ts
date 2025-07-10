@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { ArequipaComponent } from './pages/arequipa/arequipa'; // Asegúrate de que el componente está bien importado
 
 export const routes: Routes = [
   {
@@ -8,6 +7,7 @@ export const routes: Routes = [
   },
   {
     path: 'region/:regionName',  // Ruta dinámica para las regiones
-    loadComponent: () => import('./pages/arequipa/arequipa').then(m => m.ArequipaComponent)  // Aquí cargamos el componente
+    loadComponent: () => import('./pages/arequipa/arequipa').then(m => m.Arequipa)
+
   }
 ];

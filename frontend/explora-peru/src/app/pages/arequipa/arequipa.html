@@ -1,5 +1,16 @@
-<div class="region-info">
-  <h1>Bienvenido a Arequipa</h1>
-  <p>Explora la región Arequipa, famosa por su cultura, historia y gastronomía.</p>
-  <!-- Puedes agregar más detalles sobre Arequipa -->
+<!-- tus botones ya diseñados -->
+<button (click)="buscar()">Buscar</button>
+<button (click)="aleatorio()">Aleatorio</button>
+
+<!-- resultados de la región -->
+<div *ngIf="regionService.region() as region">
+  <h2>{{ region.nombre }}</h2>
+  <img [src]="region.imagen_url" width="300" />
+  <p>{{ region.descripcion }}</p>
+  <h4>Lugares turísticos:</h4>
+  <ul>
+    <li *ngFor="let lugar of region.lugares_turisticos.split(',')">
+      {{ lugar }}
+    </li>
+  </ul>
 </div>

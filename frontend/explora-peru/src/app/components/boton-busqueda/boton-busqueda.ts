@@ -11,11 +11,10 @@ export class BotonBusquedaComponent {
   
   constructor(private router: Router) {}
 
-  // Función para redirigir cuando el usuario escribe en el input
   onSearch(event: any) {
-  const query = event.target.value.toLowerCase().trim();  // Limpiar espacios y poner en minúsculas
+  const query = event.target.value.toLowerCase().trim();
   if (query) {
-    this.router.navigate([`/region/${query}`]);  // Redirigir a la página correspondiente
+    this.router.navigate([`/region/${query}`]);
   }
 }
 

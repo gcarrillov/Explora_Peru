@@ -1,0 +1,62 @@
+[
+  {
+    "model": "regiones.region",
+    "pk": 1,
+    "fields": {
+      "nombre": "Arequipa",
+      "descripcion": "Región volcánica",
+      "recursos_turisticos": "Misti, Colca"
+    }
+  },
+  {
+    "model": "regiones.region",
+    "pk": 2,
+    "fields": {
+      "nombre": "Cusco",
+      "descripcion": "Centro arqueológico del Perú",
+      "recursos_turisticos": "Machu Picchu, Valle Sagrado"
+    }
+  },
+  {
+    "model": "regiones.empresa",
+    "pk": 1,
+    "fields": {
+      "nombre": "Cruz del Sur",
+      "ruc": "12345678901",
+      "telefono": "054123456",
+      "correo": "info@cruzdelsur.com"
+    }
+  },
+  {
+    "model": "regiones.ruta",
+    "pk": 1,
+    "fields": {
+      "nombre": "Arequipa-Cusco",
+      "origen": 1,
+      "destino": 2,
+      "distancia_km": "500.00",
+      "empresa": 1
+    }
+  },
+  {
+    "model": "regiones.bus",
+    "pk": 1,
+    "fields": {
+      "placa": "V1A-879",
+      "tipo": "Cama 180°",
+      "capacidad": 40,
+      "empresa": 1
+    }
+  },
+  {
+    "model": "regiones.viaje",
+    "pk": 1,
+    "fields": {
+      "ruta": 1,
+      "bus": 1,
+      "fecha_hora_salida": "2025-07-20T07:00:00Z",
+      "precio": "150.00",
+      "asientos_disponibles": 30
+    }
+  }
+]

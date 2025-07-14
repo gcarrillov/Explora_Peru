@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Region, Ruta, Empresa
+from .models import Region, Ruta, Empresa, Bus, Viaje
 
 class RegionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,4 +18,17 @@ class RutaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Ruta
+        fields = '__all__'
+
+class BusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bus
+        fields = '__all__'
+
+class ViajeSerializer(serializers.ModelSerializer):
+    ruta = RutaSerializer(read_only=True)
+    bus = BusSerializer(read_only=True)
+
+    class Meta:
+        model = Viaje
         fields = '__all__'

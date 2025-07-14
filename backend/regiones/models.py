@@ -35,3 +35,13 @@ class Bus(models.Model):
 
     def __str__(self):
         return f"{self.placa} - {self.tipo}"
+    
+class Viaje(models.Model):
+    ruta = models.ForeignKey(Ruta, on_delete=models.CASCADE, related_name='viajes')
+    bus = models.ForeignKey(Bus, on_delete=models.CASCADE, related_name='viajes')
+    fecha_hora_salida = models.DateTimeField()
+    precio = models.DecimalField(max_digits=7, decimal_places=2)
+    asientos_disponibles = models.IntegerField()
+
+    def __str__(self):
+        return f"Viaje {self.id} - {self.ruta.nombre} el {self.fecha_hora_salida.strftime('%d/%m/%Y %H:%M')}"

@@ -1,3 +1,4 @@
-from django.contrib import admin
+from .models import Region, Ruta, Empresa, Bus, Viaje
 
-# Register your models here.
+admin.site.register(Bus)
+admin.site.register(Viaje)

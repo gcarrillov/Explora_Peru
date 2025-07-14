@@ -1,21 +1,15 @@
-from rest_framework import serializers
+from rest_framework import viewsets
 from .models import Region, Ruta, Empresa
+from .serializers import RegionSerializer, RutaSerializer, EmpresaSerializer
 
-class RegionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Region
-        fields = '__all__'
+class RegionViewSet(viewsets.ModelViewSet):
+    queryset = Region.objects.all()
+    serializer_class = RegionSerializer
 
-class EmpresaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Empresa
-        fields = '__all__'
+class EmpresaViewSet(viewsets.ModelViewSet):
+    queryset = Empresa.objects.all()
+    serializer_class = EmpresaSerializer
 
-class RutaSerializer(serializers.ModelSerializer):
-    origen = RegionSerializer(read_only=True)
-    destino = RegionSerializer(read_only=True)
-    empresa = EmpresaSerializer(read_only=True)
-
-    class Meta:
-        model = Ruta
-        fields = '__all__'
+class RutaViewSet(viewsets.ModelViewSet):
+    queryset = Ruta.objects.all()
+    serializer_class = RutaSerializer

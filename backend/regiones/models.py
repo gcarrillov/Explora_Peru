@@ -26,3 +26,12 @@ class Ruta(models.Model):
 
     def __str__(self):
         return f"{self.nombre} ({self.origen} → {self.destino})"
+
+class Bus(models.Model):
+    placa = models.CharField(max_length=10, unique=True)
+    tipo = models.CharField(max_length=50)
+    capacidad = models.IntegerField()
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, related_name='buses')
+
+    def __str__(self):
+        return f"{self.placa} - {self.tipo}"

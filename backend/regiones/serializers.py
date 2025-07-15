@@ -26,8 +26,8 @@ class BusSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ViajeSerializer(serializers.ModelSerializer):
-    ruta = RutaSerializer(read_only=True)
-    bus = BusSerializer(read_only=True)
+    ruta = serializers.PrimaryKeyRelatedField(queryset=Ruta.objects.all())
+    bus = serializers.PrimaryKeyRelatedField(queryset=Bus.objects.all())
 
     class Meta:
         model = Viaje

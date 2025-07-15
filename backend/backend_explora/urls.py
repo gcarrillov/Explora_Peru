@@ -30,4 +30,5 @@ router.register(r'viajes', ViajeViewSet, basename='viaje')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/', include('usuarios.urls')),  # activa /api/registro/ y /api/login/
 ]

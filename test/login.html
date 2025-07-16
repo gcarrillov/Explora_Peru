@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Explora_Peru - Iniciar Sesión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .logo-explora {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 6rem; /* Aumentado de 4rem a 6rem */
+            font-weight: 900;
+            background: linear-gradient(45deg, #bbff00, #00ff95);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: glow 2s ease-in-out infinite alternate, fadeInUp 1s ease-out 1;
+            letter-spacing: 4px; /* Aumentado de 2px a 4px */
+            text-transform: uppercase;
+            padding: 1rem 2rem; /* Aumentado para mayor presencia */
+        }
+
+        .logo-explora:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes glow {      
+            from {
+                text-shadow: 0 0 10px #fffad1, 0 0 20px #ffffff; /* Intensidad aumentada */
+            }
+            to {
+                text-shadow: 0 0 20px #d1e8ff, 0 0 40px #ffffff; /* Intensidad aumentada */
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px); /* Aumentado de 20px a 40px */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans min-h-screen flex flex-col">
+    <header class="bg-black text-white py-12">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <h1 class="logo-explora">Explora_Peru</h1>
+            <div class="text-center">
+                <h2 class="text-5xl font-bold">Iniciar Sesión</h2>
+                <p class="mt-4 text-xl">Accede para explorar nuestro Perú</p>
+            </div>
+            <div class="w-32"></div>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-12 px-6 flex-grow flex items-center justify-center">
+        <section class="w-full max-w-2xl bg-white p-10 rounded-lg shadow-2xl">
+            <form action="#" method="POST" class="space-y-6 opacity-50 pointer-events-none" disabled>
+                <div>
+                    <label for="username" class="block text-lg font-medium text-gray-700">Usuario</label>
+                    <input type="text" id="username" name="username" placeholder="Ingresa tu usuario" class="mt-2 w-full p-4 border-2 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-900 text-lg">
+                </div>
+                <div>
+                    <label for="password" class="block text-lg font-medium text-gray-700">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" class="mt-2 w-full p-4 border-2 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-900 text-lg">
+                </div>
+                <button type="submit" class="w-full bg-blue-900 text-white px-6 py-4 rounded-lg hover:bg-blue-700 text-xl font-semibold" disabled>Iniciar Sesión</button>
+            </form>
+            <p class="text-center text-gray-600 text-base mt-6">¿No tienes cuenta? <a href="/register" class="text-blue-600 hover:underline text-base">Regístrate aquí</a>.</p>
+        </section>
+    </main>
+
+    <footer class="bg-black text-white py-8 text-center">
+        <p class="text-lg">© 2025 Explora_Peru. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

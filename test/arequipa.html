@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Arequipa, Perú - Explora la Ciudad Blanca</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        .logo-explora {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #bbff00, #00ff95);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: glow 2s ease-in-out infinite alternate, fadeInUp 1s ease-out 1;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+        }
+
+        .logo-explora:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes glow {      
+            from {
+                text-shadow: 0 0 5px #fffad1, 0 0 10px #ffffff;
+            }
+            to {
+                text-shadow: 0 0 10px #d1e8ff, 0 0 20px #ffffff;
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <header class="bg-black text-white py-6">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="logo-explora">Explora_Peru</h1>
+            <div class="text-center">
+                <h2 class="text-4xl font-bold">Arequipa, la Ciudad Blanca</h2>
+                <p class="mt-2 text-lg">Descubre la historia, cultura y belleza de Arequipa, Perú</p>
+            </div>
+            <div class="w-24"></div>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-8 px-4">
+        <section id="galeria" class="mb-12">
+            <h2 class="text-3xl font-semibold text-blue-900 mb-4">Galería de Arequipa</h2>
+            <p class="text-gray-700 mb-4">Explora la belleza de Arequipa a través de estas imágenes representativas. Todas las fotos tienen un tamaño uniforme.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-4">
+                <div class="bg-gray-200 h-48 flex items-center justify-center transform hover:scale-105 transition duration-300">
+                    <img src="imgs/catedral-arequipa.jpg" alt="Catedral de Arequipa" class="h-48 object-contain">
+                </div>
+                <div class="bg-gray-200 h-48 flex items-center justify-center transform hover:scale-105 transition duration-300">
+                    <img src="imgs/volcan-misti.png" alt="Volcán Misti" class="h-48 object-contain">
+                </div>
+                <div class="bg-gray-200 h-48 flex items-center justify-center transform hover:scale-105 transition duration-300">
+                    <img src="imgs/canon-colca.jpg"" alt="Cañón del Colca" class="h-48 object-contain">
+                </div>
+            </div>
+        </section>
+        <section id="tradiciones" class="mb-12">
+            <h2 class="text-3xl font-semibold text-blue-900 mb-4">Tradiciones de Arequipa</h2>
+            <p class="text-gray-700 mb-4">Arequipa es conocida por su rica herencia cultural, que combina influencias preincaicas, incas y coloniales. Sus tradiciones reflejan la devoción religiosa, la identidad local y la conexión con la naturaleza.</p>
+            <ul class="list-disc pl-6 text-gray-700">
+                <li><strong>Peregrinación a la Virgen de Chapi</strong>: Cada 1 de mayo, miles de devotos peregrinan al Santuario de Chapi en Polobaya, a 90 km de Arequipa, para honrar a la patrona de la ciudad. Esta tradición, que data del siglo XVI, incluye procesiones, ferias gastronómicas y muestras de fe.</li>
+                <li><strong>Carnaval Arequipeño</strong>: Celebrado antes de la Cuaresma, este carnaval es una explosión de color con la danza del Carnaval Arequipeño, juegos con agua y la elección de la Reina del Carnaval. También se realizan ferias gastronómicas con platos como rocoto relleno.</li>
+                <li><strong>Aniversario de Arequipa</strong>: El 15 de agosto se celebra la fundación de la ciudad con desfiles cívico-militares, pasacalles, concursos de danzas y serenatas en la Plaza de Armas.</li>
+                <li><strong>Quema de Judas</strong>: Durante la Semana Santa, en el Domingo de Resurrección, se quema un muñeco de Judas en distritos como Yanahuara, acompañado de un "testamento" satírico que critica a figuras públicas.</li>
+            </ul>
+        </section>
+        <section id="costumbres" class="mb-12">
+            <h2 class="text-3xl font-semibold text-blue-900 mb-4">Costumbres de Arequipa</h2>
+            <p class="text-gray-700 mb-4">Las costumbres de Arequipa reflejan su identidad única, desde su gastronomía hasta sus danzas y tradiciones ancestrales.</p>
+            <ul class="list-disc pl-6 text-gray-700">
+                <li><strong>Picanterías</strong>: Estos restaurantes tradicionales, declarados Patrimonio Cultural de la Nación en 2014, son el corazón de la gastronomía arequipeña. Platos como el rocoto relleno, adobo arequipeño, chupe de camarones y chicha de jora se sirven en un ambiente familiar. Ejemplos incluyen La Nueva Palomino y La Lucila.</li>
+                <li><strong>Danza del Wititi</strong>: Originaria del Valle del Colca, esta danza, declarada Patrimonio Cultural Inmaterial por la UNESCO en 2015, representa un cortejo amoroso donde hombres se disfrazan de mujeres. Es común en festividades como el Carnaval.</li>
+                <li><strong>Pelea de toros</strong>: Una tradición de origen agrícola donde toros criados especialmente compiten en eventos organizados, especialmente el 15 de agosto. La Asociación de Criadores regula estas peleas para evitar maltrato.</li>
+                <li><strong>Pesca del camarón</strong>: En los valles de Ocoña, Majes-Camaná y Tambo, esta actividad ancestral se celebra con festivales y la Danza de la Pesca del Camarón, especialmente el 29 de noviembre.</li>
+            </ul>
+        </section>
+        <section id="lugares" class="mb-12">
+            <h2 class="text-3xl font-semibold text-blue-900 mb-4">Lugares Turísticos en Arequipa</h2>
+            <p class="text-gray-700 mb-4">Arequipa ofrece una combinación de arquitectura colonial, paisajes naturales y sitios históricos que atraen a miles de turistas cada año.</p>
+            <ul class="list-disc pl-6 text-gray-700 mb-4">
+                <li><strong>Monasterio de Santa Catalina</strong>: Fundado en 1579, este complejo colonial es una ciudad dentro de la ciudad, con callejones coloridos y arquitectura de sillar. Entrada: ~40 soles.</li>
+                <li><strong>Cañón del Colca</strong>: Uno de los cañones más profundos del mundo, ideal para avistamiento de cóndores y caminatas. Se encuentra a unas 4 horas de Arequipa.</li>
+                <li><strong>Plaza de Armas</strong>: El corazón de Arequipa, rodeado de la Catedral, arcos de sillar y restaurantes. Es un punto ideal para comenzar a explorar la ciudad.</li>
+                <li><strong>Volcán Misti</strong>: Un ícono de Arequipa, visible desde la ciudad. Los aventureros pueden escalarlo con guías especializados.</li>
+                <li><strong>Museo Santuarios Andinos</strong>: Alberga la momia Juanita, una niña inca sacrificada. Entrada: ~20 soles.</li>
+            </ul>
+            <h3 class="text-2xl font-semibold text-blue-900 mb-4">Mapa Interactivo</h3>
+            <div id="map" class="w-full h-96 mb-4"></div>
+            <script>
+                var map = L.map('map').setView([-16.3989, -71.5350], 12);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                }).addTo(map);
+
+                var marker1 = L.marker([-16.398866, -71.537451]).addTo(map)
+                    .bindPopup('Monasterio de Santa Catalina');
+                marker1.on('click', function() {
+                    window.open('https://maps.app.goo.gl/5hTcSDMUM1hXHesk8', '_blank');
+                });
+
+                var marker2 = L.marker([-16.2500, -71.2600]).addTo(map)
+                    .bindPopup('Cañón del Colca');
+                marker2.on('click', function() {
+                    window.open('https://maps.app.goo.gl/khffGmmxFRgmuwsG9', '_blank');
+                });
+
+                var marker3 = L.marker([-16.398822, -71.536987]).addTo(map)
+                    .bindPopup('Plaza de Armas');
+                marker3.on('click', function() {
+                    window.open('https://maps.app.goo.gl/mByQn4TCwA9JECJS9', '_blank');
+                });
+
+                var marker4 = L.marker([-16.373356, -71.563622]).addTo(map)
+                    .bindPopup('Volcán Misti');
+                marker4.on('click', function() {
+                    window.open('https://maps.app.goo.gl/hJX4qSswUZubiyJ8A', '_blank');
+                });
+
+                var marker5 = L.marker([-16.399441, -71.535721]).addTo(map)
+                    .bindPopup('Museo Santuarios Andinos');
+                marker5.on('click', function() {
+                    window.open('https://maps.app.goo.gl/QD2ezF7dgaAgeXx69', '_blank');
+                });
+            </script>
+        </section>
+        <section id="personajes" class="mb-12">
+            <h2 class="text-3xl font-semibold text-blue-900 mb-4">Personajes Destacados de Arequipa</h2>
+            <p class="text-gray-700 mb-4">Arequipa ha sido cuna de figuras notables que han dejado huella en la literatura, la política y la cultura.</p>
+            <div class="bg-white p-6 rounded shadow mb-6">
+                <div class="flex flex-col sm:flex-row items-center">
+                    <div class="w-48 h-48 mb-4 sm:mb-0 sm:mr-6">
+                        <a href="https://unsplash.com/photos/man-in-suit-holding-a-book-9z9b9Z9Z9Z9" target="_blank" class="block">
+                            <img src="imgs/mario-vargas.jpeg" alt="Mario Vargas Llosa" class="w-full h-full object-cover rounded">
+                        </a>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">Mario Vargas Llosa</h3>
+                        <p class="text-gray-700">Nacido el 28 de marzo de 1936 en Arequipa, Mario Vargas Llosa es uno de los escritores más destacados del mundo hispanohablante. Ganador del Premio Nobel de Literatura en 2010, sus obras como *La ciudad y los perros* y *Conversación en La Catedral* exploran la realidad peruana con profundidad y maestría. Además de novelista, ha sido ensayista, dramaturgo y político, siendo candidato a la presidencia de Perú en 1990.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded shadow mb-6">
+                <div class="flex flex-col sm:flex-row items-center">
+                    <div class="w-48 h-48 mb-4 sm:mb-0 sm:mr-6">
+                        <a href="https://unsplash.com/photos/poet-with-book-7Y6b7Z7Q7Z0" target="_blank" class="block">
+                            <img src="imgs/mariano-melgar.jpg" alt="Mariano Melgar" class="w-full h-full object-cover rounded">
+                        </a>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">Mariano Melgar</h3>
+                        <p class="text-gray-700">Nacido en 1790 en Arequipa, Mariano Melgar fue un poeta y héroe de la independencia peruana. Conocido por sus yaravíes, poemas melancólicos de amor y patria, murió en 1815 luchando contra las fuerzas realistas. Su legado cultural sigue vivo en la literatura peruana.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="gastronomia" class="mb-12">
+            <h2 class="text-3xl font-semibold text-blue-900 mb-4">Gastronomía de Arequipa</h2>
+            <p class="text-gray-700 mb-4">La gastronomía arequipeña es famosa por su sabor único, con influencias andinas y coloniales. Las picanterías son el lugar ideal para disfrutar de estos platos tradicionales.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-xl font-bold">Rocoto Relleno</h3>
+                    <p class="text-gray-700">Rocoto deshuesado relleno de carne molida, queso, aceitunas y especias, servido con pastel de papa. Es un plato picante y emblemático de Arequipa.</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-xl font-bold">Chupe de Camarones</h3>
+                    <p class="text-gray-700">Sopa espesa con camarones frescos, papas, maíz, queso y leche, sazonada con hierbas andinas. Ideal para días fríos.</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-xl font-bold">Adobo Arequipeño</h3>
+                    <p class="text-gray-700">Carne de cerdo marinada en chicha de jora y especias, cocida lentamente. Tradicionalmente se sirve los domingos con pan.</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-xl font-bold">Queso Helado</h3>
+                    <p class="text-gray-700">Postre cremoso hecho con leche, canela, coco y clavo, servido frío. Su textura recuerda al helado, pero se elabora artesanalmente.</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-xl font-bold">Ocopa Arequipeña</h3>
+                    <p class="text-gray-700">Papa cocida cubierta con una salsa cremosa de ají y maní, servida con aceitunas y huevo duro. Un plato fresco y sabroso.</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-xl font-bold">Pastel de Papa</h3>
+                    <p class="text-gray-700">Capa de puré de papa rellena de carne o queso, horneada hasta dorarse. Acompaña perfectamente al rocoto relleno.</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-xl font-bold">Solterito Arequipeño</h3>
+                    <p class="text-gray-700">Ensalada fría de maíz, queso fresco, tomate, cebolla y aceitunas, sazonada con ají. Ideal como entrada ligera.</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-xl font-bold">Chicharrón de Chancho</h3>
+                    <p class="text-gray-700">Trozos de cerdo fritos hasta quedar crujientes, servidos con camote, maíz y sarsa. Un plato contundente y popular.</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="text-xl font-bold">Picarones</h3>
+                    <p class="text-gray-700">Rosquillas de calabaza y camote fritas, servidas con chancaca. Un postre dulce y tradicional de las fiestas.</p>
+                </div>
+            </div>
+        </section>
+        <section id="contacto" class="mb-12">
+            <h2 class="text-3xl font-semibold text-blue-900 mb-4">Contáctanos</h2>
+            <p class="text-gray-700 mb-4">¿Tienes preguntas o quieres compartir tu experiencia en Arequipa? Para enviar un mensaje, por favor <a href="/login" class="text-blue-600 hover:underline">inicia sesión</a>. Si aún no estás registrado, <a href="/register" class="text-blue-600 hover:underline">regístrate aquí</a>.</p>
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4 opacity-50 pointer-events-none" disabled>
+                <input type="text" name="name" placeholder="Nombre" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-900">
+                <input type="email" name="email" placeholder="Correo electrónico" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-900">
+                <textarea name="message" placeholder="Tu mensaje" class="w-full p-2 border rounded h-32 focus:outline-none focus:ring-2 focus:ring-blue-900"></textarea>
+                <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-700" disabled>Enviar</button>
+            </form>
+            <p class="text-gray-600 text-sm mt-2">Usaremos tu información solo para responder a tu mensaje tras iniciar sesión.</p>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,113 @@
+[
+    {
+        "model": "regiones.region",
+        "pk": 1,
+        "fields": {
+            "nombre": "Arequipa",
+            "descripcion": "Región sur del Perú conocida por sus volcanes.",
+            "recursos_turisticos": "Volcán Misti, Cañón del Colca, Monasterio de Santa Catalina"
+        }
+    },
+    {
+        "model": "regiones.region",
+        "pk": 2,
+        "fields": {
+            "nombre": "Cusco",
+            "descripcion": "Antigua capital del Imperio Inca.",
+            "recursos_turisticos": "Machu Picchu, Sacsayhuamán, Valle Sagrado"
+        }
+    },
+    {
+        "model": "regiones.region",
+        "pk": 3,
+        "fields": {
+            "nombre": "Puno",
+            "descripcion": "Región andina junto al lago Titicaca.",
+            "recursos_turisticos": "Islas flotantes de los Uros, Lago Titicaca"
+        }
+    },
+    {
+        "model": "regiones.empresa",
+        "pk": 1,
+        "fields": {
+            "nombre": "Cruz del Sur",
+            "ruc": "20123456789",
+            "telefono": "054123456",
+            "correo": "reservas@cruzdelsur.com"
+        }
+    },
+    {
+        "model": "regiones.empresa",
+        "pk": 2,
+        "fields": {
+            "nombre": "Oltursa",
+            "ruc": "20567891234",
+            "telefono": "013456789",
+            "correo": "contacto@oltursa.com"
+        }
+    },
+    {
+        "model": "regiones.ruta",
+        "pk": 1,
+        "fields": {
+            "nombre": "Arequipa - Cusco",
+            "origen": 1,
+            "destino": 2,
+            "distancia_km": "510.00",
+            "empresa": 1
+        }
+    },
+    {
+        "model": "regiones.ruta",
+        "pk": 2,
+        "fields": {
+            "nombre": "Cusco - Puno",
+            "origen": 2,
+            "destino": 3,
+            "distancia_km": "390.00",
+            "empresa": 2
+        }
+    },
+    {
+        "model": "regiones.bus",
+        "pk": 1,
+        "fields": {
+            "placa": "ABC-123",
+            "tipo": "Semi Cama",
+            "capacidad": 42,
+            "empresa": 1
+        }
+    },
+    {
+        "model": "regiones.bus",
+        "pk": 2,
+        "fields": {
+            "placa": "XYZ-789",
+            "tipo": "Cama 180°",
+            "capacidad": 30,
+            "empresa": 2
+        }
+    },
+    {
+        "model": "regiones.viaje",
+        "pk": 1,
+        "fields": {
+            "ruta": 1,
+            "bus": 1,
+            "fecha_hora_salida": "2025-07-21T08:00:00Z",
+            "precio": "160.00",
+            "asientos_disponibles": 35
+        }
+    },
+    {
+        "model": "regiones.viaje",
+        "pk": 2,
+        "fields": {
+            "ruta": 2,
+            "bus": 2,
+            "fecha_hora_salida": "2025-07-22T10:30:00Z",
+            "precio": "140.00",
+            "asientos_disponibles": 28
+        }
+    }
+]

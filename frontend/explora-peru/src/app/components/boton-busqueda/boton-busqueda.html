@@ -5,12 +5,12 @@
       <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#fff" d="M22 22L20 20"></path>
     </svg>
   </button>
-  
   <input 
+    #input
     placeholder="Buscar región..." 
     class="input" 
     name="text" 
     type="text"
-    (keyup)="onSearch($event)"
+    (keyup.enter)="onSearch(input.value)"
   >
 </div>

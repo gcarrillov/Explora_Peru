@@ -8,14 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./boton-busqueda.css']
 })
 export class BotonBusquedaComponent {
-  
   constructor(private router: Router) {}
 
-  onSearch(event: any) {
-  const query = event.target.value.toLowerCase().trim();
-  if (query) {
-    this.router.navigate([`/region/${query}`]);
+  onSearch(valor: string) {
+    const query = valor.toLowerCase().trim();
+    if (query) {
+      this.router.navigate([`/region/${query}`]);
+    }
   }
-}
-
 }

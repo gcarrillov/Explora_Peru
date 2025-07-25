@@ -3,11 +3,12 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./app').then(m => m.App),
+    loadComponent: () =>
+      import('./pages/home.component').then((m) => m.HomeComponent),
   },
   {
-    path: 'region/:regionName',  // Ruta dinámica para las regiones
-    loadComponent: () => import('./pages/arequipa/arequipa').then(m => m.Arequipa)
-
+    path: 'region/:nombre',
+    loadComponent: () =>
+      import('./components/region-detalle.component').then((m) => m.RegionDetalleComponent),
   }
 ];

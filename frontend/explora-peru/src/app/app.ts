@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { HeaderComponent } from './components/header/header';
-import { RegionesComponent } from './components/region.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RegionesComponent],
+  imports: [RouterOutlet],
   template: `
-    <h1>Explora Perú</h1>
-    <app-regiones></app-regiones>
+    <router-outlet></router-outlet>
   `,
 })
 export class App {}

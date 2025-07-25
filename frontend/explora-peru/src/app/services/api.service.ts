@@ -13,4 +13,12 @@ export class ApiService {
   getRegiones(): Observable<any> {
     return this.http.get(`${BASE_URL}/regiones/`);
   }
+
+  getRegionPorNombre(nombre: string): Observable<any> {
+    return this.http.get(`${BASE_URL}/regiones/por_nombre/?nombre=${nombre}`);
+  }
+
+  getRutasPorRegion(nombreRegion: string): Observable<any> {
+    return this.http.get(`${BASE_URL}/rutas/?region=${nombreRegion}`);
+  }
 }

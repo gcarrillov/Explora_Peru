@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  background-color: #616fad;
+  height: 100vh;
+}
+
+.contenedor-imagenes {
+  display: flex;
+  height: calc(100vh - 80px);
+}
+
+.imagen.izquierda {
+  flex: 1;
+  overflow: hidden;
+}
+
+.imagen.izquierda img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagen.derecha {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #135079; /* por el momento es un color, pero seria bueno poner un mejor fondo*/
+  overflow: hidden;
+}
+
+.imagen.derecha img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}

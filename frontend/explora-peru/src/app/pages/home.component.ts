@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../components/header/header';
-import { RegionesComponent } from '../components/region.component';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +8,8 @@ import { RegionesComponent } from '../components/region.component';
   imports: [
     CommonModule,
     HeaderComponent,
-    RegionesComponent
   ],
-  template: `
-    <app-header></app-header>
-    <div class="container mt-4">
-      <app-regiones></app-regiones>
-    </div>
-  `
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {}

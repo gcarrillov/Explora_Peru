@@ -1,0 +1,10 @@
+<ng-container *ngIf="region(); else cargando">
+  <img *ngIf="region().imagen" [src]="region().imagen" alt="Imagen región" class="portada" />
+  <h1>{{ region().nombre }}</h1>
+  <p>{{ region().descripcion }}</p>
+  <!-- Más campos: lugares, comidas, costumbres -->
+</ng-container>
+
+<ng-template #cargando>
+  <p>Región no encontrada o aún cargando...</p>
+</ng-template>

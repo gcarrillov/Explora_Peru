@@ -9,6 +9,6 @@ export const routes: Routes = [
   {
     path: 'region/:nombre',
     loadComponent: () =>
-      import('./components/region-detalle.component').then((m) => m.RegionDetalleComponent),
+      import('./pages/region-detalle/region-detalle').then((m) => m.RegionDetalleComponent),
   }
 ];

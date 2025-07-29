@@ -1,32 +1,48 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from .models import Region, Ruta, Empresa, Bus, Viaje
 from .serializers import RegionSerializer, RutaSerializer, EmpresaSerializer, BusSerializer, ViajeSerializer
-from rest_framework.response import Response
-from rest_framework.decorators import action
+
+class RegionPorNombreAPIView(APIView):
+    def get(self, request):
+        nombre = request.query_params.get('nombre', '').strip().lower()
+        print("Buscando región con nombre:", nombre)
+
+        print("Django recibió la búsqueda:", request.query_params.get("nombre"))
+
+        try:
+            region = Region.objects.get(nombre__iexact=nombre)
+
+            rutas = Ruta.objects.filter(origen=region) | Ruta.objects.filter(destino=region)
+            rutas_data = RutaSerializer(rutas, many=True).data
+
+            response_data = {
+                'id': region.id,
+                'nombre': region.nombre,
+                'descripcion': region.descripcion,
+                'imagen': request.build_absolute_uri(region.imagen.url) if region.imagen else None,
+                'lugares_turisticos': region.lugares_turisticos,
+                'tradiciones': region.tradiciones,
+                'comidas_tipicas': region.comidas_tipicas,
+                'costumbres': region.costumbres,
+                'rutas': rutas_data
+            }
+            return Response(response_data)
+        except Region.DoesNotExist:
+            return Response({'error': 'Región no encontrada'}, status=status.HTTP_404_NOT_FOUND)
 
 class RegionViewSet(viewsets.ModelViewSet):
     queryset = Region.objects.all()
     serializer_class = RegionSerializer
 
-    @action(detail=False)
-    def por_nombre(self, request):
-        nombre = request.query_params.get('nombre', None)
-        if nombre:
-            try:
-                region = Region.objects.get(nombre__iexact=nombre)
-                serializer = self.get_serializer(region)
-                return Response(serializer.data)
-            except Region.DoesNotExist:
-                return Response({'error': 'Región no encontrada'}, status=404)
-        return Response({'error': 'Debe proporcionar el nombre'}, status=400)
+class RutaViewSet(viewsets.ModelViewSet):
+    queryset = Ruta.objects.all()
+    serializer_class = RutaSerializer
 
 class EmpresaViewSet(viewsets.ModelViewSet):
     queryset = Empresa.objects.all()
     serializer_class = EmpresaSerializer
-
-class RutaViewSet(viewsets.ModelViewSet):
-    queryset = Ruta.objects.all()
-    serializer_class = RutaSerializer
 
 class BusViewSet(viewsets.ModelViewSet):
     queryset = Bus.objects.all()

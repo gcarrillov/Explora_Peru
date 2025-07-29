@@ -4,7 +4,10 @@ from .models import Region, Ruta, Empresa, Bus, Viaje
 class RegionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Region
-        fields = '__all__'
+        fields = [
+            'id', 'nombre', 'descripcion', 'imagen',
+            'lugares_turisticos', 'tradiciones', 'comidas_tipicas', 'costumbres'
+        ]
 
 class EmpresaSerializer(serializers.ModelSerializer):
     class Meta:

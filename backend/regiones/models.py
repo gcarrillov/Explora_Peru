@@ -5,6 +5,12 @@ class Region(models.Model):
     descripcion = models.TextField()
     recursos_turisticos = models.TextField()
 
+    imagen = models.ImageField(upload_to='regiones/', null=True, blank=True)
+    lugares_turisticos = models.TextField(default="Desconocido")
+    tradiciones = models.TextField(default="Desconocido")
+    costumbres = models.TextField(default="Desconocido")
+    comidas_tipicas = models.TextField(default="Desconocido")
+
     def __str__(self):
         return self.nombre
     

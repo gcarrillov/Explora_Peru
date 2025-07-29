@@ -20,8 +20,12 @@ export class LoginComponent {
   onLogin() {
     this.authService.login(this.username, this.password).subscribe({
       next: (data) => {
-        this.authService.saveToken(data.token);
-        this.router.navigate(['/']); // redirige al inicio
+        // ✅ Guardar token y username en localStorage
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('username', data.username);
+
+        // Redirigir al inicio
+        this.router.navigate(['/']);
       },
       error: (err) => {
         alert('Credenciales incorrectas. Inténtalo de nuevo.');

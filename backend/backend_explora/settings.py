@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -145,3 +146,7 @@ EMAIL_HOST_USER = 'exploraperu6@gmail.com'
 EMAIL_HOST_PASSWORD = 'qjlgnshuaioowpwu'  # token de aplicación SIN espacios
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Explora Perú <exploraperu6@gmail.com>'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",
+]

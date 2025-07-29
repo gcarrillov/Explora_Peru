@@ -9,7 +9,7 @@ export class RegionService {
   constructor(private http: HttpClient) {}
 
   getRegionPorNombre(nombre: string) {
-    const url = `${this.baseUrl}/api/regiones/buscar?nombre=${nombre}`;
+    const url = `${this.baseUrl}/api/regiones/buscar/?nombre=${nombre}`;
     console.log("📡 URL consultada:", url);
 
     this.http.get(url).subscribe({

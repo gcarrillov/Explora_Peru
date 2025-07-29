@@ -1,8 +1,8 @@
 <app-header></app-header>
 
-<main class="main-layout">
-  <section
-    class="left-panel"
+<!-- Mostrar mapa e imagen solo si NO estamos en login o register -->
+<main class="main-layout" *ngIf="mostrarContenidoPrincipal">
+  <section class="left-panel"
     style="background-image: url('assets/fondo.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
   </section>
 
@@ -11,5 +11,5 @@
   </section>
 </main>
 
-<!-- El contenedor donde los componentes se mostrarán según la ruta -->
+<!-- Aquí se renderizan las rutas como login, register, region, etc. -->
 <router-outlet></router-outlet>

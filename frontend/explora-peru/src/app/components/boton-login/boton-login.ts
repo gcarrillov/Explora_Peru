@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-boton-login',
@@ -7,4 +8,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./boton-login.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class BotonLoginComponent {}
+export class BotonLoginComponent {
+  constructor(private router: Router) {}
+
+  irAlLogin() {
+    this.router.navigate(['/login']);
+  }
+}

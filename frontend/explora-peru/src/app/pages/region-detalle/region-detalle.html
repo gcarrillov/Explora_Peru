@@ -1,10 +1,46 @@
-<ng-container *ngIf="region(); else cargando">
-  <img *ngIf="region().imagen" [src]="region().imagen" alt="Imagen región" class="portada" />
-  <h1>{{ region().nombre }}</h1>
-  <p>{{ region().descripcion }}</p>
-  <!-- Más campos: lugares, comidas, costumbres -->
-</ng-container>
+<app-header></app-header>
 
-<ng-template #cargando>
-  <p>Región no encontrada o aún cargando...</p>
-</ng-template>
+<div class="region-container">
+  <img [src]="region()?.imagen" alt="Imagen de la región" class="region-image">
+
+  <div class="region-info">
+    <h1>{{ region()?.nombre }}</h1>
+    <p class="descripcion">{{ region()?.descripcion }}</p>
+
+    <section>
+      <h2>🗺️ Lugares turísticos</h2>
+      <ul>
+        <li *ngFor="let lugar of region()?.lugares_turisticos?.split('\r\n')">{{ lugar }}</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🎉 Tradiciones</h2>
+      <p>{{ region()?.tradiciones }}</p>
+    </section>
+
+    <section>
+      <h2>🍲 Comidas Típicas</h2>
+      <p>{{ region()?.comidas_tipicas }}</p>
+    </section>
+
+    <section>
+      <h2>👨‍👩‍👧‍👦 Costumbres</h2>
+      <p>{{ region()?.costumbres }}</p>
+    </section>
+
+    <section>
+      <h2>🚌 Rutas desde esta región</h2>
+      <ul class="ruta-lista">
+        <li *ngFor="let ruta of region()?.rutas">
+          <div class="ruta-card">
+            <strong>{{ ruta.nombre }}</strong>
+            <p>➡️ Destino: {{ ruta.destino.nombre }}</p>
+            <p>🏢 Empresa: {{ ruta.empresa.nombre }}</p>
+            <p>📏 Distancia: {{ ruta.distancia_km }} km</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>

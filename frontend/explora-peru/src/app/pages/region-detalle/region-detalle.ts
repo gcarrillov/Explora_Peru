@@ -2,11 +2,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { RegionService } from '../../services/region/region';
+import { HeaderComponent } from '../../components/header/header';
+
 
 @Component({
   selector: 'app-region-detalle',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeaderComponent],
   templateUrl: './region-detalle.html',
   styleUrls: ['./region-detalle.css']
 })

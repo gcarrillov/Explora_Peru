@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import jsPDF from 'jspdf';
+import { HeaderComponent } from '../../components/header/header';
 
 @Component({
   selector: 'app-viajar',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HeaderComponent],
   templateUrl: './viajar.html',
   styleUrls: ['./viajar.css']
 })
@@ -15,7 +16,7 @@ export class ViajarComponent {
   destino = '';
   empresa = '';
   fecha = '';
-  emailDestino = 'gcarrillov@edu.pe';
+  emailDestino = 'exploraperu.reservas@gmail.com';
 
   regiones = ['Ica', 'La Libertad', 'Lima', 'Puno', 'Cusco', 'Arequipa'];
   empresas = ['Cruz del Sur', 'Oltursa', 'Flores'];
@@ -32,11 +33,6 @@ export class ViajarComponent {
     doc.text('Estamos buscando los mejores planes para ti.', 20, 80);
     doc.text('Te notificaremos pronto con las mejores opciones.', 20, 90);
 
-    // 🔻 Descarga del PDF (por ahora)
     doc.save('reserva_viaje.pdf');
-
-    // 🔻 Lugar para enviar el PDF por correo (futuro)
-    // Aquí se puede usar EmailJS, API REST o backend en Django para enviar el PDF
-    // Ejemplo: enviarPDFPorCorreo(this.emailDestino, archivoPDF);
   }
 }

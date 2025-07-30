@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-boton-aleatorio',
@@ -7,4 +8,9 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./boton-aleatorio.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class BotonAleatorioComponent {}
+export class BotonAleatorioComponent {
+  constructor(private router: Router) {}
+  onDescubrirRegion() {
+    this.router.navigate(['/descubrir']);
+  }
+}

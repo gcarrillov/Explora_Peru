@@ -1,39 +1,43 @@
 <app-header></app-header>
 
-<div class="region-detalle container">
-  <h1 class="fw-bold">{{ region()?.nombre }}</h1>
-
-  <img *ngIf="region()?.imagen" [src]="region()?.imagen" alt="Imagen de la región" class="region-imagen img-fluid rounded my-3" />
+<div class="region-detalle-container">
+  <div class="region-header">
+    <h1>{{ region()?.nombre }}</h1>
+    <img [src]="region()?.imagen" alt="Imagen de la región" class="region-portada" />
+  </div>
 
   <p class="descripcion">{{ region()?.descripcion }}</p>
 
-  <!-- Acerca de -->
-  <div *ngIf="region()?.acerca_de">
-    <h2 class="section-title mt-4">Acerca de esta Región</h2>
+  <section class="section-box" *ngIf="region()?.acerca_de">
+    <h2>Acerca de esta Región</h2>
     <p>{{ region()?.acerca_de }}</p>
-  </div>
-
-  <p class="section-title">Galería de Fotos</p>
-  <div class="galeria">
-    <img *ngFor="let foto of region()?.galeria" [src]="foto.imagen" alt="foto región" />
-  </div>
-
-
-  <!-- Lugares Turísticos -->
-  <section *ngIf="region()?.lugares_turisticos">
-    <h2 class="section-title mt-4">Lugares Turísticos</h2>
-    <p>{{ region()?.lugares_turisticos }}</p>
   </section>
 
-  <!-- Tradiciones -->
-  <section *ngIf="region()?.tradiciones">
-    <h2 class="section-title mt-4">Tradiciones</h2>
-    <p>{{ region()?.tradiciones }}</p>
+  <section class="section-box" *ngIf="region()?.galeria?.length">
+    <h2>Galería de Fotos</h2>
+    <div class="galeria-grid">
+      <img *ngFor="let foto of region()?.galeria" [src]="foto.imagen" alt="foto región" />
+    </div>
   </section>
 
-  <!-- Comidas Típicas -->
-  <section *ngIf="region()?.comidas_tipicas">
-    <h2 class="section-title mt-4">Comidas Típicas</h2>
-    <p>{{ region()?.comidas_tipicas }}</p>
+  <section class="section-box" *ngIf="region()?.lugares_turisticos">
+    <h2>Lugares Turísticos</h2>
+    <ul>
+      <li *ngFor="let lugar of region()?.lugares_turisticos.split(',')">{{ lugar.trim() }}</li>
+    </ul>
+  </section>
+
+  <section class="section-box" *ngIf="region()?.tradiciones">
+    <h2>Tradiciones</h2>
+    <ul>
+      <li *ngFor="let tradicion of region()?.tradiciones.split(',')">{{ tradicion.trim() }}</li>
+    </ul>
+  </section>
+
+  <section class="section-box" *ngIf="region()?.comidas_tipicas">
+    <h2>Comidas Típicas</h2>
+    <ul>
+      <li *ngFor="let comida of region()?.comidas_tipicas.split(',')">{{ comida.trim() }}</li>
+    </ul>
   </section>
 </div>

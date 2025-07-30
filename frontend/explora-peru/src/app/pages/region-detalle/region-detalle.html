@@ -40,4 +40,9 @@
       <li *ngFor="let comida of region()?.comidas_tipicas.split(',')">{{ comida.trim() }}</li>
     </ul>
   </section>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <button class="btn btn-primary btn-lg" (click)="goToViajar()">¡Viajar!</button>
+  </div>
+
 </div>

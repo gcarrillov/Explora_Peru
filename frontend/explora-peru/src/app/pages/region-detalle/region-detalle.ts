@@ -1,8 +1,8 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ActivatedRoute} from '@angular/router';
-import {RegionService} from '../../services/region/region';
-import {HeaderComponent} from '../../components/header/header';
+import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RegionService } from '../../services/region/region';
+import { HeaderComponent } from '../../components/header/header';
 
 @Component({
   selector: 'app-region-detalle',
@@ -13,6 +13,7 @@ import {HeaderComponent} from '../../components/header/header';
 })
 export class RegionDetalleComponent implements OnInit {
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   regionService = inject(RegionService);
 
   region = this.regionService.region;
@@ -22,5 +23,9 @@ export class RegionDetalleComponent implements OnInit {
       const nombre = params.get('nombre') || '';
       this.regionService.getRegionPorNombre(nombre);
     });
+  }
+
+  goToViajar() {
+    this.router.navigate(['/viajar']);
   }
 }

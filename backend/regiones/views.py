@@ -69,7 +69,7 @@ class ViajeViewSet(viewsets.ModelViewSet):
     queryset = Viaje.objects.all()
     serializer_class = ViajeSerializer
 
-class RegionAleatoriaView(View):
+class RegionAleatoriaView(APIView):
     def get(self, request):
         # Obtener todas las regiones
         regiones = Region.objects.all()
@@ -80,10 +80,26 @@ class RegionAleatoriaView(View):
         # Seleccionar una región aleatoria
         region_aleatoria = random.choice(regiones)
 
-        base_url = reverse('buscar-region')
-        query_params = urlencode({'nombre': region_aleatoria.nombre})
-        redirect_url = f'{base_url}?{query_params}'
+        nombre = region_aleatoria.nombre.strip().lower()
 
-        
-        # Redirigir a la vista de búsqueda con el nombre de la región
-        return redirect(redirect_url) 
+
+        try:
+            region = Region.objects.get(nombre__iexact=nombre)
+
+            rutas = Ruta.objects.filter(origen=region) | Ruta.objects.filter(destino=region)
+            rutas_data = RutaSerializer(rutas, many=True).data
+
+            response_data = {
+                'id': region.id,
+                'nombre': region.nombre,
+                'descripcion': region.descripcion,
+                'imagen': request.build_absolute_uri(region.imagen.url) if region.imagen else None,
+                'lugares_turisticos': region.lugares_turisticos,
+                'tradiciones': region.tradiciones,
+                'comidas_tipicas': region.comidas_tipicas,
+                'costumbres': region.costumbres,
+                'rutas': rutas_data
+            }
+            return Response(response_data)
+        except Region.DoesNotExist:
+            return Response({'error': 'Región no encontrada'}, status=status.HTTP_404_NOT_FOUND)

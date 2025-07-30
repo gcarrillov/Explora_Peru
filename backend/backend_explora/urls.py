@@ -19,8 +19,9 @@ router.register(r'viajes', ViajeViewSet, basename='viaje')
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    path('api/regiones/', include('regiones.urls')),
     # Primero las rutas personalizadas
-    path('api/regiones/buscar/', RegionPorNombreAPIView.as_view(), name='buscar-region'),
+    #path('api/regiones/buscar/', RegionPorNombreAPIView.as_view(), name='buscar-region'),
 
     # Luego el router (para que no las intercepte)
     path('api/', include(router.urls)),

@@ -65,3 +65,7 @@ ul li {
 .galeria-grid img:hover {
   transform: scale(1.05);
 }
+.descripcion {
+  display: block;
+  text-align: center;
+}

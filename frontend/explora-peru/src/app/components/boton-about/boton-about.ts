@@ -7,4 +7,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./boton-about.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class BotonAboutComponent {}
+export class BotonAboutComponent {
+  onClickAbout() {
+    window.open('https://drive.google.com/drive/folders/1Jb6fLnA-lFrR4ANVKPKxNXtXeXKdS1YY?usp=sharing', '_blank');
+  }
+}

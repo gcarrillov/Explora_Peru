@@ -21,11 +21,9 @@ export class LoginComponent {
   onLogin() {
     this.authService.login(this.username, this.password).subscribe({
       next: (data) => {
-        // ✅ Guardar token y username en localStorage
         localStorage.setItem('token', data.token);
         localStorage.setItem('username', data.username);
-
-        // Redirigir al inicio
+        
         this.router.navigate(['/']);
       },
       error: (err) => {

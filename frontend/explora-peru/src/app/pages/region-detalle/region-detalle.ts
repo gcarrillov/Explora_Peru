@@ -18,12 +18,9 @@ export class RegionDetalleComponent implements OnInit {
   region = this.regionService.region;
 
   ngOnInit(): void {
-    const regionData = this.route.snapshot.data['regionData']
-    if (regionData) {
-      this.regionService.setRegionData(regionData);
-      return;
-    }
-    const nombre = this.route.snapshot.paramMap.get('nombre') || '';
-    this.regionService.getRegionPorNombre(nombre);
+    this.route.paramMap.subscribe(params => {
+      const nombre = params.get('nombre') || '';
+      this.regionService.getRegionPorNombre(nombre);
+    });
   }
 }

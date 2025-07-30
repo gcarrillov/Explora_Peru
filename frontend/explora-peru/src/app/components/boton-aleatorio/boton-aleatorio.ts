@@ -13,4 +13,10 @@ export class BotonAleatorioComponent {
   onDescubrirRegion() {
     this.router.navigate(['/descubrir']);
   }
+  regiones: string[] = ['arequipa', 'lima', 'cusco', 'la libertad', 'puno'];
+
+  onClickAleatorio() {
+    const aleatoria = this.regiones[Math.floor(Math.random() * this.regiones.length)];
+    this.router.navigate([`/region/${aleatoria}`]);
+  }
 }

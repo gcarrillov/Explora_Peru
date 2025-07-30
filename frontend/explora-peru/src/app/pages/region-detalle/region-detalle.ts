@@ -4,7 +4,6 @@ import {ActivatedRoute} from '@angular/router';
 import {RegionService} from '../../services/region/region';
 import {HeaderComponent} from '../../components/header/header';
 
-
 @Component({
   selector: 'app-region-detalle',
   standalone: true,

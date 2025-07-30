@@ -1,7 +1,7 @@
-import { Injectable, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Injectable, signal} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class RegionService {
   private baseUrl = 'http://localhost:8000';
   region = signal<any>(null);
@@ -22,6 +22,10 @@ export class RegionService {
         this.region.set(null);
       }
     });
+  }
+
+  setRegionData(data: any) {
+    this.region.set(data);
   }
 
 }

@@ -105,3 +105,30 @@
   font-size: 16px;
   text-transform: uppercase;
 }
+
+.brutalist-bloque-logueado {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.texto-logueado {
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.cerrar-sesion {
+  padding: 5px 12px;
+  font-size: 13px;
+  background-color: #000;
+  border: 2px solid white;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.cerrar-sesion:hover {
+  background-color: #222;
+}

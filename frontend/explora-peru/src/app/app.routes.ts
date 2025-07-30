@@ -17,5 +17,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/region-detalle/region-detalle').then((m) => m.RegionDetalleComponent),
     resolve: {regionData: randomRegionResolver}
-  }
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent)
+  },
+  {
+    path: 'register',
+    loadComponent: () => import('./pages/register/register.component').then(m => m.RegisterComponent)
+  },
 ];

@@ -1,7 +1,17 @@
+<!-- Si el usuario ha iniciado sesión -->
+<div *ngIf="logueado; else loginBoton" class="brutalist-bloque-logueado">
+  <span class="texto-logueado">Hola, {{ username }}</span>
+  <button (click)="cerrarSesion()" class="brutalist-button cerrar-sesion">
+    Cerrar sesión
+  </button>
+</div>
 
-<button class="brutalist-button">
-  <div class="button-text">
-    <span>lOGIN / </span>
-    <span>SIGN UP</span>
-  </div>
-</button>
+<!-- Si NO ha iniciado sesión -->
+<ng-template #loginBoton>
+  <button class="brutalist-button" (click)="irAlLogin()">
+    <div class="button-text">
+      <span>LOGIN / </span>
+      <span>SIGN UP</span>
+    </div>
+  </button>
+</ng-template>

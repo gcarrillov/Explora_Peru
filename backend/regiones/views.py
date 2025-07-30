@@ -7,30 +7,14 @@ from .serializers import RegionSerializer, RutaSerializer, EmpresaSerializer, Bu
 class RegionPorNombreAPIView(APIView):
     def get(self, request):
         nombre = request.query_params.get('nombre', '').strip().lower()
-        print("Buscando región con nombre:", nombre)
-
-        print("Django recibió la búsqueda:", request.query_params.get("nombre"))
-
+        print("🔍 Django recibió la búsqueda:", nombre)
         try:
             region = Region.objects.get(nombre__iexact=nombre)
-
-            rutas = Ruta.objects.filter(origen=region) | Ruta.objects.filter(destino=region)
-            rutas_data = RutaSerializer(rutas, many=True).data
-
-            response_data = {
-                'id': region.id,
-                'nombre': region.nombre,
-                'descripcion': region.descripcion,
-                'imagen': request.build_absolute_uri(region.imagen.url) if region.imagen else None,
-                'lugares_turisticos': region.lugares_turisticos,
-                'tradiciones': region.tradiciones,
-                'comidas_tipicas': region.comidas_tipicas,
-                'costumbres': region.costumbres,
-                'rutas': rutas_data
-            }
-            return Response(response_data)
+            serializer = RegionSerializer(region, context={'request': request})
+            return Response(serializer.data)
         except Region.DoesNotExist:
-            return Response({'error': 'Región no encontrada'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Región no encontrada'}, status=404)
+
 
 class RegionViewSet(viewsets.ModelViewSet):
     queryset = Region.objects.all()

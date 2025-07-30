@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { RegionService } from '../../services/region/region';
 import { HeaderComponent } from '../../components/header/header';
 
-
 @Component({
   selector: 'app-region-detalle',
   standalone: true,
@@ -19,7 +18,7 @@ export class RegionDetalleComponent implements OnInit {
   region = this.regionService.region;
 
   ngOnInit(): void {
-    const nombre = this.route.snapshot.paramMap.get('nombre') || '';
-    this.regionService.getRegionPorNombre(nombre);
-  }
+  const nombre = this.route.snapshot.paramMap.get('nombre') || '';
+  this.regionService.getRegionPorNombre(nombre);
+}
 }

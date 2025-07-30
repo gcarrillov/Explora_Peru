@@ -1,46 +1,39 @@
 <app-header></app-header>
 
-<div class="region-container">
-  <img [src]="region()?.imagen" alt="Imagen de la región" class="region-image">
+<div class="region-detalle container">
+  <h1 class="fw-bold">{{ region()?.nombre }}</h1>
 
-  <div class="region-info">
-    <h1>{{ region()?.nombre }}</h1>
-    <p class="descripcion">{{ region()?.descripcion }}</p>
+  <img *ngIf="region()?.imagen" [src]="region()?.imagen" alt="Imagen de la región" class="region-imagen img-fluid rounded my-3" />
 
-    <section>
-      <h2>🗺️ Lugares turísticos</h2>
-      <ul>
-        <li *ngFor="let lugar of region()?.lugares_turisticos?.split('\r\n')">{{ lugar }}</li>
-      </ul>
-    </section>
+  <p class="descripcion">{{ region()?.descripcion }}</p>
 
-    <section>
-      <h2>🎉 Tradiciones</h2>
-      <p>{{ region()?.tradiciones }}</p>
-    </section>
-
-    <section>
-      <h2>🍲 Comidas Típicas</h2>
-      <p>{{ region()?.comidas_tipicas }}</p>
-    </section>
-
-    <section>
-      <h2>👨‍👩‍👧‍👦 Costumbres</h2>
-      <p>{{ region()?.costumbres }}</p>
-    </section>
-
-    <section>
-      <h2>🚌 Rutas desde esta región</h2>
-      <ul class="ruta-lista">
-        <li *ngFor="let ruta of region()?.rutas">
-          <div class="ruta-card">
-            <strong>{{ ruta.nombre }}</strong>
-            <p>➡️ Destino: {{ ruta.destino.nombre }}</p>
-            <p>🏢 Empresa: {{ ruta.empresa.nombre }}</p>
-            <p>📏 Distancia: {{ ruta.distancia_km }} km</p>
-          </div>
-        </li>
-      </ul>
-    </section>
+  <!-- Acerca de -->
+  <div *ngIf="region()?.acerca_de">
+    <h2 class="section-title mt-4">Acerca de esta Región</h2>
+    <p>{{ region()?.acerca_de }}</p>
   </div>
+
+  <p class="section-title">Galería de Fotos</p>
+  <div class="galeria">
+    <img *ngFor="let foto of region()?.galeria" [src]="foto.imagen" alt="foto región" />
+  </div>
+
+
+  <!-- Lugares Turísticos -->
+  <section *ngIf="region()?.lugares_turisticos">
+    <h2 class="section-title mt-4">Lugares Turísticos</h2>
+    <p>{{ region()?.lugares_turisticos }}</p>
+  </section>
+
+  <!-- Tradiciones -->
+  <section *ngIf="region()?.tradiciones">
+    <h2 class="section-title mt-4">Tradiciones</h2>
+    <p>{{ region()?.tradiciones }}</p>
+  </section>
+
+  <!-- Comidas Típicas -->
+  <section *ngIf="region()?.comidas_tipicas">
+    <h2 class="section-title mt-4">Comidas Típicas</h2>
+    <p>{{ region()?.comidas_tipicas }}</p>
+  </section>
 </div>

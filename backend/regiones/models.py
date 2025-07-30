@@ -3,17 +3,22 @@ from django.db import models
 class Region(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField()
-    recursos_turisticos = models.TextField()
-
     imagen = models.ImageField(upload_to='regiones/', null=True, blank=True)
     lugares_turisticos = models.TextField(default="Desconocido")
     tradiciones = models.TextField(default="Desconocido")
-    costumbres = models.TextField(default="Desconocido")
     comidas_tipicas = models.TextField(default="Desconocido")
+    acerca_de = models.TextField(default="")
 
     def __str__(self):
         return self.nombre
-    
+
+class FotoRegion(models.Model):
+    region = models.ForeignKey(Region, on_delete=models.CASCADE, related_name='galeria')
+    imagen = models.ImageField(upload_to='galeria_regiones/')
+
+    def __str__(self):
+        return f"Imagen de {self.region.nombre}"
+
 class Empresa(models.Model):
     nombre = models.CharField(max_length=100)
     ruc = models.CharField(max_length=11, unique=True)
